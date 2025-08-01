@@ -9,7 +9,7 @@ import Offers from "./pages/offersPage"
 import Orders from "./pages/ordersPage"
 import Payment from "./pages/paymentPage"
 
- function App() {
+function App() {
   return (
     <Router>
       <Routes>

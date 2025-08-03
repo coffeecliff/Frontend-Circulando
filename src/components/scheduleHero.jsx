@@ -3,16 +3,38 @@ import bg from "../assets/imagens/bus.png"
 
 
 const linhas = [
-  { codigo: "N101-11", destino: "TERM. PQ. D. PEDRO II", origem: "TERM. LAPA" },
-  { codigo: "N101-11", destino: "TERM. LAPA", origem: "TERM. PQ. D. PEDRO II" },
-  { codigo: "N102-11", destino: "TERM. PQ. D. PEDRO II", origem: "TERM. LAPA" },
-  { codigo: "N102-11", destino: "TERM. LAPA", origem: "TERM. PQ. D. PEDRO II" },
-  { codigo: "N103-11", destino: "TERM. PIRITUBA", origem: "TERM. LAPA" },
-  { codigo: "N103-11", destino: "TERM. LAPA", origem: "TERM. PIRITUBA" },
-  { codigo: "N104-11", destino: "TERM. LAPA", origem: "TERM. PIRITUBA" },
-  { codigo: "N104-11", destino: "TERM. PIRITUBA", origem: "TERM. LAPA" },
-  { codigo: "N105-11", destino: "TERM. CACHOEIRINHA", origem: "TERM. LAPA" },
+  {
+    nome: "Parque Real.pdf",
+    codigo: "220",
+    sufixo: "U",
+    mensagem: "Nenhum veículo se aproximando próximo a avenida Vicente Simões",
+  },
+  {
+    nome: "Cidade Jardim.pdf",
+    codigo: "330",
+    sufixo: "U",
+    mensagem: "Nenhum veículo se aproximando próximo a avenida Vicente Simões",
+  },
+  {
+    nome: "Morumbi.pdf",
+    codigo: "230",
+    sufixo: "U",
+    mensagem: "Nenhum veículo se aproximando próximo a avenida Vicente Simões",
+  },
+  {
+    nome: "Jardim ypê.pdf",
+    codigo: "330",
+    sufixo: "U",
+    mensagem: "Nenhum veículo se aproximando próximo a avenida Vicente Simões",
+  },
+  {
+    nome: "Pão de Açucar.pdf",
+    codigo: "209",
+    sufixo: "U",
+    mensagem: "Nenhum veículo se aproximando próximo a avenida Vicente Simões",
+  },
 ];
+
 
 
 const ScheduleHero = () => {
@@ -30,27 +52,18 @@ const ScheduleHero = () => {
           className="w-full p-2 border rounded mb-4 text-sm"
         />
 
-        <ul className="space-y-3">
+        <ul className="divide-y divide-gray-300 cursor-pointer">
           {linhas.map((linha, index) => (
-            <li
-              key={index}
-              className="flex items-center justify-between p-3 bg-gray-100 rounded hover:bg-gray-200 transition cursor-pointer"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-xl">🚌</span>
-                <div>
-                  <p className="font-semibold text-gray-800">
-                    {linha.codigo} ➜ {linha.destino}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {linha.origem} / {linha.destino}
-                  </p>
-                </div>
-              </div>
-              <span className="text-gray-400 text-xl">›</span>
+            <li key={index} className="p-4 hover:bg-gray-200 transition">
+              <p className="font-bold text-lg text-gray-800">{linha.nome}</p>
+              <p className="text-sm text-gray-600">
+                Linha: {linha.codigo} sufixo {linha.sufixo}
+              </p>
+              <p className="text-sm text-gray-500 mt-1">{linha.mensagem}</p>
             </li>
           ))}
         </ul>
+
       </div>
     </div>
   );

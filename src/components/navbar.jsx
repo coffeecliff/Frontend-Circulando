@@ -3,7 +3,7 @@ import logo from "../assets/imagens/buslogo.png"
 import { LuBadgeHelp } from "react-icons/lu";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { BsTicketDetailed } from "react-icons/bs";
-import { RiDiscountPercentLine } from "react-icons/ri";
+import { GrScheduleNew } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { TiHomeOutline } from "react-icons/ti";
 import { IoExitOutline } from "react-icons/io5";
@@ -34,7 +34,7 @@ const Navbar = () => {
             <TiHomeOutline style={{ marginRight: '8px' }} />Home
             </a>
             <a href="/schedule" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
-                <RiDiscountPercentLine style={{ marginRight: '8px' }} />Ofertas
+                <GrScheduleNew style={{ marginRight: '8px' }} />Cronograma
             </a>
             <a href="/help" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
                 <LuBadgeHelp style={{ marginRight: '8px' }} />Ajuda

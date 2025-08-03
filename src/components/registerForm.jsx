@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const RegisterForm = () => {
     const [nome, setNome] = useState('');
@@ -16,11 +17,11 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post("https://backend-portalturismo-9v5w.onrender.com/api/users" ,{
+          const response = await axios.post("https://backend-circulando.onrender.com/api/users" ,{
             name: nome,
             email,
-            password: senha
-            
+            password: senha,
+            number: telefone
           });
          alert("Usuário cadastrado com sucesso!!" + `nome: ${response.data.name} email: ${response.data.email}`)
          window.location.href = "/login"

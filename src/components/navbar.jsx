@@ -33,7 +33,7 @@ const Navbar = () => {
             <a href="/" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
             <TiHomeOutline style={{ marginRight: '8px' }} />Home
             </a>
-            <a href="/offers" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
+            <a href="/schedule" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
                 <RiDiscountPercentLine style={{ marginRight: '8px' }} />Ofertas
             </a>
             <a href="/help" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">

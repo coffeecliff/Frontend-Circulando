@@ -2,16 +2,16 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import bg from "../assets/imagens/bus.png"
-import OffersForm from "../components/offers";
+import ScheduleForm from "../components/ScheduleForm";
 
-const OffersPage = () => {
+const Schedule = () => {
   return (
     <>
         <div className="flex flex-col min-h-screen">
         <Navbar />
 
         <div>
-          <OffersForm/>
+          <ScheduleForm/>
         </div>
         
         <Footer />
@@ -21,4 +21,4 @@ const OffersPage = () => {
   );
 };
 
-export default OffersPage;
+export default Schedule;

@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const HelpForm = () =>{
+  const [formData, setFormData] = useState({
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await axios.post("https://backend-circulando.onrender.com/api/contact", {
+            email: formData.email,
+            message: formData.message,
+        });
+        alert("menssagem cadastrada com sucesso!!" + `email: ${formData.email}`)
+        window.location.href = "/"
+    } catch (error) {
+        if (error.response) {
+            alert("Erro ao enviar mensagem de contato")
+        } else {
+            alert("erro ao conectar ao servidor")
+        }
+    }
+  };
+
     return(
         <>
         
@@ -36,16 +67,36 @@ const HelpForm = () =>{
           {/* Formulário de Contato */}
           <section className="bg-white shadow-md rounded-lg p-6">
             <h2 className="text-2xl font-semibold text-[#007BFF] mb-4">Entre em Contato</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
-                <input type="email" id="email" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm" />
+                <input 
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="Digite seu e-mail"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm" 
+                />
               </div>
               <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mensagem</label>
-                <textarea id="message" rows="4" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"></textarea>
+                <textarea 
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="4" 
+                  placeholder="Digite sua mensagem..."
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
+                ></textarea>
               </div>
-              <button type="submit" className="w-full py-2 px-4 bg-[#007BFF] text-white font-semibold rounded-lg cursor-pointer shadow-md hover:bg-[#007BFF] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+              <button 
+                type="submit" 
+                className="w-full py-2 px-4 bg-[#007BFF] text-white font-semibold rounded-lg cursor-pointer shadow-md hover:bg-[#007BFF] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
                 Enviar Mensagem
               </button>
             </form>

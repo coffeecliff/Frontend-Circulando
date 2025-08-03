@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, {use, useState} from "react";
+import axios from 'axios';
+import {useNavigate} from "react-router-dom"
  
 const LoginForm = () => {
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
- 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Email: ${email} \nSenha: ${senha}`)
-  }
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await axios.post("https://backend-circulando.onrender.com/api/auth/login", {
+            email,
+            password: senha
+          })
+          const userData = response.data;
+          localStorage.setItem("user", JSON.stringify(userData))
+          alert("usuario logado com sucesso!!")
+          navigate("/")
+        } catch (error) {
+          if (error.response) {
+            alert("Erro ao logar usuário email ou senha incorretos")
+          } else {
+            alert("erro ao conectar ao servidor")
+          }
+        }
+    };
  
   return (
     <>

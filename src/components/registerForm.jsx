@@ -13,10 +13,30 @@ const RegisterForm = () => {
         setTelefone('');
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`Email: ${email} \nSenha: ${senha}`)
-    }
+        try {
+          const response = await axios.post("https://backend-portalturismo-9v5w.onrender.com/api/users" ,{
+            name: nome,
+            email,
+            password: senha
+            
+          });
+         alert("Usuário cadastrado com sucesso!!" + `nome: ${response.data.name} email: ${response.data.email}`)
+         window.location.href = "/login"
+        } catch (error) {
+          if (error.response) {
+            console.error("Erro completo da API:", error.response.data);
+            alert("Erro ao cadastrar: " + error.response.data.message);
+          } else if (error.request) {
+            console.error("Requisição feita, mas sem resposta:", error.request);
+            alert("Erro: o servidor não respondeu.");
+          } else {
+            console.error("Erro desconhecido:", error.message);
+            alert("Erro inesperado: " + error.message);
+          }
+        }
+      };
 
     return (
         <>

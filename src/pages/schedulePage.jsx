@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import bg from "../assets/imagens/bus.png"
-import ScheduleForm from "../components/ScheduleForm";
+import ScheduleForm from "../components/scheduleForm";
 
 const Schedule = () => {
   return (

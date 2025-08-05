@@ -39,9 +39,7 @@ const Navbar = () => {
             <a href="/help" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
                 <LuBadgeHelp style={{ marginRight: '8px' }} />Ajuda
             </a>
-            <a href="/explore" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
-                <FaMapMarkedAlt style={{ marginRight: '8px' }} />Explorar
-            </a>
+
             <a href="/orders" className="text-white hover:text-[#95ffff] transition-colors duration-300 text-lg font-stretch-condensed font-semibold flex items-center space-x-2">
                 <BsTicketDetailed style={{ marginRight: '8px' }} />Pedidos
             </a>

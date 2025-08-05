@@ -8,7 +8,7 @@ import Help from "./pages/helpPage"
 import Schedule from "./pages/schedulePage"
 import Orders from "./pages/ordersPage"
 import Payment from "./pages/paymentPage"
-import ProfilePage from "./pages/profilePage"
+import Profile from "./pages/profilePage"
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/help" element={<Help/>}/>
         <Route path="/orders" element={<Orders/>}/>
         <Route path="/payment" element={<Payment/>}/>
-        <Route path="/profile" element={<ProfilePage/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
     </Router>
   )

@@ -1,10 +1,9 @@
-import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
 import React, { useState } from "react";
 
-const ProfilePage = () => {
+const Profile = () => {
   // Dados fixos (pode vir da API ou contexto)
   const [profile, setProfile] = useState({
     nome: "João Silva",
@@ -123,4 +122,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Profile;

@@ -109,7 +109,7 @@ const Profile = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-bold py-3 rounded-full hover:bg-blue-700 transition cursor-pointer"
+            className="w-full bg-[#007BFF] text-white font-bold py-3 rounded-full hover:bg-blue-600 transition cursor-pointer"
           >
             Salvar alterações
           </button>

@@ -1,90 +1,125 @@
-import React, { useState, useEffect } from "react";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
-const ProfilePage = () => {
-  const [dadosUsuario, setDadosUsuario] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    telefone: "",
+import React, { useState } from "react";
+
+const Profile = () => {
+  // Dados fixos (pode vir da API ou contexto)
+  const [profile, setProfile] = useState({
+    nome: "João Silva",
+    email: "joao.silva@email.com",
+    senha: "minhaSenhaSecreta", // Vamos mostrar censurado
+    telefone: "+55 (35) 99999-9999",
+    residencia: "",
+    documento: "",
+    preferencias: "",
   });
 
-  const [residencia, setResidencia] = useState("");
-  const [referencia, setReferencia] = useState("");
-  const [cidade, setCidade] = useState("");
+  // Função para atualizar campos editáveis
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setProfile(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
 
-  useEffect(() => {
-    // Simula dados já cadastrados (normalmente viria de API ou localStorage)
-    const dadosCadastrados = {
-      nome: "João da Silva",
-      email: "joao@email.com",
-      senha: "********", // senha exibida de forma censurada
-      telefone: "+55 (35) 99999-9999",
-    };
-    setDadosUsuario(dadosCadastrados);
-  }, []);
+  // Mostra senha censurada (ex: 8 asteriscos)
+  const senhaCensurada = "•".repeat(profile.senha.length);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
-      <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-2xl">
-        <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">Perfil do Usuário</h2>
+    <>
+    <div className="flex flex-col min-h-screen">
+            <Navbar />
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="bg-white rounded-3xl shadow-lg p-8 max-w-lg w-full">
+        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">
+          Meu Perfil
+        </h1>
 
-        <div className="space-y-4 text-black">
+        {/* Dados fixos */}
+        <div className="mb-6 space-y-3">
           <div>
-            <label className="block font-semibold">Nome:</label>
-            <p className="bg-gray-100 p-2 rounded-md">{dadosUsuario.nome}</p>
+            <label className="block font-semibold text-gray-700">Nome</label>
+            <p className="mt-1 text-gray-900">{profile.nome}</p>
           </div>
 
           <div>
-            <label className="block font-semibold">Email:</label>
-            <p className="bg-gray-100 p-2 rounded-md">{dadosUsuario.email}</p>
+            <label className="block font-semibold text-gray-700">Email</label>
+            <p className="mt-1 text-gray-900">{profile.email}</p>
           </div>
 
           <div>
-            <label className="block font-semibold">Senha:</label>
-            <p className="bg-gray-100 p-2 rounded-md">{dadosUsuario.senha}</p>
+            <label className="block font-semibold text-gray-700">Senha</label>
+            <p className="mt-1 text-gray-900 tracking-widest">{senhaCensurada}</p>
           </div>
 
           <div>
-            <label className="block font-semibold">Telefone:</label>
-            <p className="bg-gray-100 p-2 rounded-md">{dadosUsuario.telefone}</p>
-          </div>
-
-          <div>
-            <label className="block font-semibold">Endereço / Residência:</label>
-            <input
-              type="text"
-              value={residencia}
-              onChange={(e) => setResidencia(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Rua, número, bairro..."
-            />
-          </div>
-
-          <div>
-            <label className="block font-semibold">Ponto de Referência:</label>
-            <input
-              type="text"
-              value={referencia}
-              onChange={(e) => setReferencia(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Ex: Próximo ao mercado X..."
-            />
-          </div>
-
-          <div>
-            <label className="block font-semibold">Cidade:</label>
-            <input
-              type="text"
-              value={cidade}
-              onChange={(e) => setCidade(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="Cidade"
-            />
+            <label className="block font-semibold text-gray-700">Telefone</label>
+            <p className="mt-1 text-gray-900">{profile.telefone}</p>
           </div>
         </div>
+
+        {/* Inputs editáveis */}
+        <form className="space-y-5" onSubmit={e => e.preventDefault()}>
+          <div>
+            <label htmlFor="residencia" className="block font-semibold text-gray-700 mb-1">
+              Endereço residencial
+            </label>
+            <input
+              type="text"
+              id="residencia"
+              name="residencia"
+              value={profile.residencia}
+              onChange={handleChange}
+              placeholder="Rua, número, bairro, cidade"
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="documento" className="block font-semibold text-gray-700 mb-1">
+              Documento (CPF ou RG)
+            </label>
+            <input
+              type="text"
+              id="documento"
+              name="documento"
+              value={profile.documento}
+              onChange={handleChange}
+              placeholder="000.000.000-00"
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="preferencias" className="block font-semibold text-gray-700 mb-1">
+              Preferências de viagem
+            </label>
+            <textarea
+              id="preferencias"
+              name="preferencias"
+              value={profile.preferencias}
+              onChange={handleChange}
+              placeholder="Ex: Assento na janela, passagem só ida, etc."
+              rows={3}
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#007BFF] text-white font-bold py-3 rounded-full hover:bg-blue-600 transition cursor-pointer"
+          >
+            Salvar alterações
+          </button>
+        </form>
       </div>
     </div>
+    <Footer />
+    </div>
+    </>
   );
 };
 
-export default ProfilePage;
+export default Profile;
